@@ -8,10 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -20,11 +18,7 @@ public class Main extends Application {
     final int col = 30;
 
     @Override
-    public void start(Stage stage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        stage.setTitle("sdm");
-//        stage.setScene(new Scene(root, 300, 275));
-//        stage.show();
+    public void start(Stage stage) throws Exception {
         Seat[][] seatList1 = new Seat[row][col];
         Seat[][] seatList2 = new Seat[row][col];
         Pane flight1 = new Pane();
@@ -80,8 +74,8 @@ public class Main extends Application {
                 int row = Integer.parseInt(label1.getText().substring(5, 6));
                 int col = Integer.parseInt(label1.getText().substring(7, 8));
                 Boolean isSuccess = seatList1[row][col].reserve(name, telNumber);
-                if(isSuccess){
-                    label1.setText(label1.getText()+"予約済み");
+                if (isSuccess) {
+                    label1.setText(label1.getText() + "予約済み");
                 }
             }
         });
@@ -93,8 +87,8 @@ public class Main extends Application {
                 int row = Integer.parseInt(label2.getText().substring(5, 6));
                 int col = Integer.parseInt(label2.getText().substring(7, 8));
                 Boolean isSuccess = seatList2[row][col].reserve(name, telNumber);
-                if(isSuccess){
-                    label2.setText(label2.getText()+"予約済み");
+                if (isSuccess) {
+                    label2.setText(label2.getText() + "予約済み");
                 }
             }
         });
@@ -122,12 +116,12 @@ public class Main extends Application {
             }
         });
 
-        for(int i = 0; i < row; i++){
+        for (int i = 0; i < row; i++) {
             HBox hBox1 = new HBox(10d);
             HBox hBox2 = new HBox(10d);
             vBox1.getChildren().add(hBox1);
             vBox2.getChildren().add(hBox2);
-            for(int j = 0; j < col; j++){
+            for (int j = 0; j < col; j++) {
                 Button button1 = new Button(String.format("%d-%d", i, j));
                 Button button2 = new Button(String.format("%d-%d", i, j));
                 int finalI = i;
@@ -135,12 +129,12 @@ public class Main extends Application {
                 button1.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        if(seatList1[finalI][finalJ].getIsReserved()){
+                        if (seatList1[finalI][finalJ].getIsReserved()) {
                             label1.setText(String.format("Seat %d-%d予約済み", finalI, finalJ));
                             Subscriber subscriber = seatList1[finalI][finalJ].getSubscriber();
                             nameField1.setText(subscriber.getName());
                             telNumberField1.setText(subscriber.getTelNumber());
-                        }else{
+                        } else {
                             label1.setText(String.format("Seat %d-%d", finalI, finalJ));
                             nameField1.setText("");
                             telNumberField1.setText("");
@@ -150,12 +144,12 @@ public class Main extends Application {
                 button2.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        if(seatList2[finalI][finalJ].getIsReserved()){
+                        if (seatList2[finalI][finalJ].getIsReserved()) {
                             label2.setText(String.format("Seat %d-%d予約済み", finalI, finalJ));
                             Subscriber subscriber = seatList2[finalI][finalJ].getSubscriber();
                             nameField2.setText(subscriber.getName());
                             telNumberField2.setText(subscriber.getTelNumber());
-                        }else{
+                        } else {
                             label2.setText(String.format("Seat %d-%d", finalI, finalJ));
                             nameField2.setText("");
                             telNumberField2.setText("");
@@ -172,7 +166,6 @@ public class Main extends Application {
         vBox2.getChildren().add(input2);
 
 
-
         Tab tabA = new Tab("01便");
         tabA.setContent(flight1);
 
@@ -180,7 +173,7 @@ public class Main extends Application {
         tabB.setContent(flight2);
 
         TabPane tabPane = new TabPane();
-        tabPane.getTabs().addAll(tabA,tabB);
+        tabPane.getTabs().addAll(tabA, tabB);
 
 
         Pane pane = new Pane();

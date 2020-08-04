@@ -7,11 +7,12 @@ public class Subscriber {
 
     /**
      * Subscriber constructor
-     * @param name Subscriber's name
+     *
+     * @param name      Subscriber's name
      * @param telNumber Subscriber's telephone number
-     * @param seat The seat that subscriber reserved
+     * @param seat      The seat that subscriber reserved
      */
-    Subscriber(String name, String telNumber, Seat seat){
+    Subscriber(String name, String telNumber, Seat seat) {
         this.name = name;
         this.telNumber = telNumber;
         this.seat = seat;
@@ -19,6 +20,7 @@ public class Subscriber {
 
     /**
      * Get subscriber's name
+     *
      * @return subscriber's name
      */
     public String getName() {
@@ -27,6 +29,7 @@ public class Subscriber {
 
     /**
      * Get subscriber's telephone number
+     *
      * @return subscriber's telephone number
      */
     public String getTelNumber() {
