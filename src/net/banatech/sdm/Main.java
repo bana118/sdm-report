@@ -102,7 +102,9 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 nameField1.setText("");
                 telNumberField1.setText("");
-                seatList1[0][0].cancel();
+                int row = Integer.parseInt(label1.getText().substring(5, 6));
+                int col = Integer.parseInt(label1.getText().substring(7, 8));
+                seatList1[row][col].cancel();
                 label1.setText(label1.getText().substring(0, label1.getText().length() - "予約済み".length()));
             }
         });
@@ -111,7 +113,9 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 nameField2.setText("");
                 telNumberField2.setText("");
-                seatList2[0][0].cancel();
+                int row = Integer.parseInt(label2.getText().substring(5, 6));
+                int col = Integer.parseInt(label2.getText().substring(7, 8));
+                seatList2[row][col].cancel();
                 label2.setText(label2.getText().substring(0, label2.getText().length() - "予約済み".length()));
             }
         });
